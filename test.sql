@@ -1,0 +1,5 @@
+select
+  *
+FROM
+  hogehoge
+;
