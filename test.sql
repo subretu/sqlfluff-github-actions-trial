@@ -1,5 +1,0 @@
-select
-  *
-FROM
-  hogehoge
-;
