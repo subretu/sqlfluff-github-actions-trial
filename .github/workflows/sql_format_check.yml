@@ -16,10 +16,10 @@ jobs:
         run: "pip install sqlfluff==1.0.0"
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           ref: ${{ github.head_ref }}
       - name: 'Lint models'
         run: |
-          for file in $(git diff origin/${TARGET_BRANCH} HEAD --diff-filter=AM --name-only -- "*.sql") ; do
+          for file in $(git diff origin/${TARGET_BRANCH} HEAD --diff-filter=AM --name-only --relative=./sql) ; do
             sqlfluff lint ${file} --rules L001,L002,L004,L006,L010,L019 --dialect postgres
           done
