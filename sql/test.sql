@@ -1,5 +1,6 @@
 select
   *
 FROM
+
   hogehoge
 ;
