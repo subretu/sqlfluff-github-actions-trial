@@ -9,14 +9,16 @@ jobs:
   lint-models:
     runs-on: ubuntu-latest
     steps:
-      - uses: "actions/checkout@v2"
       - uses: "actions/setup-python@v2"
         with:
             python-version: "3.9"
       - name: Install SQLFluff
         run: "pip install sqlfluff==1.0.0"
       - name: 'Fetch'
-        run: git fetch --depth 1 origin ${TARGET_BRANCH}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          ref: ${{ github.head_ref }}
       - name: 'Lint models'
         run: |
           for file in $(git diff origin/${TARGET_BRANCH} HEAD --diff-filter=AM --name-only -- "*.sql") ; do
