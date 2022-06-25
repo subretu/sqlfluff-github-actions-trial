@@ -1,5 +1,5 @@
 select
   *
-from
+FROM
   hogehoge
 ;
