@@ -2,4 +2,5 @@ select
   *
 FROM
   hogehoge
+
 ;
